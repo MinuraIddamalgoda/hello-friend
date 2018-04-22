@@ -1,7 +1,13 @@
-const folders = []
+const folders = [];
+ThemeList = {
+    DEFAULT: 0,
+    NEOPOLITAN: 1,
+    MOTHER_EARTH: 2
+};
+var selectedTheme = ThemeList.DEFAULT;
 
 chrome.bookmarks.getTree(items => {
-    const bookmarksBar = items[0].children.find(x => x.title === 'Bookmarks bar');
+    const bookmarksBar = items[0].children.find(x => /bookmarks bar/i.test(x.title));
     const rootFolder = { title: '/', children: [] };
 
     bookmarksBar.children.forEach(node => {
@@ -25,11 +31,11 @@ chrome.bookmarks.getTree(items => {
     if (rootFolder.children.length)
         folders.unshift(rootFolder);
 
-    render(folders);
+    render(folders, selectedTheme);
 });
 
-function render(folders) {
-    const colors = ['#cc6666', '#de935f', '#f0c674', '#8abeb7', '#81a2be', '#b294bb', '#a3685a'];
+function render(folders, theme) {
+    const colors = getColours(theme);
     const root = document.getElementById('container');
     let i = 0;
     root.innerHTML = folders.map(folder => {
@@ -48,4 +54,40 @@ function trunc(text) {
         return text;
 
     return text.substr(0, 30) + '...'
+}
+
+function getColours(theme) {
+    switch(theme) {
+        case ThemeList.DEFAULT:
+            return ['#cc6666', '#de935f', '#f0c674', '#8abeb7', '#81a2be', '#b294bb', '#a3685a'];
+        case ThemeList.NEOPOLITAN:
+            return ["#e0b2b5", "#b99692", "#9c9a9b", "#e1c3ae", "#c9c0ae", "#8f5a61", "#503d41"];
+        case ThemeList.MOTHER_EARTH:
+            return ["#488761", "#9f725c", "#ac955b", "#7b5028", "#9db337", "#e2cd88", "#8ba877"];
+        default:
+            return null;
+    }
+}
+
+function setTheme(index) {
+    switch(index) {
+        case 0:
+            console.log("theme changed");
+            selectedTheme = ThemeList.DEFAULT;
+            render(folders, selectedTheme);
+            window.location.href = "index.html";
+            break;
+        case 1:
+            console.log("theme changed");
+            selectedTheme = ThemeList.NEOPOLITAN;
+            render(folders, selectedTheme);
+            window.location.href = "index.html";
+            break;
+        case 2:
+            console.log("theme changed");
+            selectedTheme = ThemeList.MOTHER_EARTH;
+            render(folders, selectedTheme);
+            window.location.href = "index.html";
+            break;
+    }
 }

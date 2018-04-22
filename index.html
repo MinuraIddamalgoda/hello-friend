@@ -7,65 +7,7 @@
     <title>hello, friend</title>
     <script src="script.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            background: #1d1f21;
-            color: white;
-            margin: 0;
-            font-family: Consolas, 'Courier New', Courier, monospace;
-            font-size: 14px;
-            line-height: 1.2rem;
-            text-transform: lowercase;
-            margin: 33vh auto;
-            cursor: default;
-        }
-
-        #container {
-            display: grid;
-            align-self: center;
-            justify-content: center;
-            justify-items: center;
-            justify-self: center;
-            grid-gap: 2rem;
-            height: auto;
-        }
-
-        h1 {
-            color: rgb(66, 66, 66);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        h2 {
-            font-size: 1rem;
-        }
-
-        a {
-            text-decoration: none;
-            color: #c5c8c6;
-        }
-
-        .separator {
-            line-height: 0.75rem;
-        }
-
-        a:hover {
-            color: white;
-            font-weight: bold;
-        }
-
-        ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        div.column {
-            justify-self: center;
-            grid-area: 1;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 </head>
 
 <body>
@@ -111,6 +53,12 @@
             </ul>
         </div>
     </div>
+    <div id="img_div">
+        <a href="options.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 8 8">
+                <path d="M5.5 0c-1.38 0-2.5 1.12-2.5 2.5 0 .32.08.62.19.91l-2.91 2.88c-.39.39-.39 1.05 0 1.44.2.2.46.28.72.28.26 0 .52-.09.72-.28l2.88-2.91c.28.11.58.19.91.19 1.38 0 2.5-1.12 2.5-2.5 0-.16 0-.32-.03-.47l-.97.97h-2v-2l.97-.97c-.15-.03-.31-.03-.47-.03zm-4.5 6.5c.28 0 .5.22.5.5s-.22.5-.5.5-.5-.22-.5-.5.22-.5.5-.5z"></path>
+            </svg>
+        </a>
+    </div>
 </body>
-
 </html>
